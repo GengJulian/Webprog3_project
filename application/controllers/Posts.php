@@ -47,4 +47,8 @@ class Posts extends CI_Controller{
 		redirect('posts');
 	}
 
+	public function edit($id){
+
+	}
+
 }

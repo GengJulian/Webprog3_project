@@ -30,6 +30,7 @@
 		}
 
 		public function delete_post($id){
-			$this->db->
+			$this->db->where('id',$id);
+			$this->db->delete('posts');
 		}
 	}

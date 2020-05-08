@@ -5,7 +5,7 @@
 	<?php echo $post['body']; ?><br>
 	<hr>
 	<?php echo form_open('/posts/delete/'.$post['id']); ?>
-		<input type="button" value="delete" class="btn btn-danger">
+		<input type="submit" value="delete" class="btn btn-danger">
 	</form>
 <?php endforeach;?>
 

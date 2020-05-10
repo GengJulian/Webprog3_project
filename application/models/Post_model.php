@@ -33,4 +33,16 @@
 			$this->db->where('id',$id);
 			$this->db->delete('posts');
 		}
+
+		public function edit_post(){
+			$slug = url_title($this->input->post('title'));
+
+			$data = array(
+				'title' => $this->input->post('title'),
+				'slug'  => $slug,
+				'body'  => $this->input->post('body'),
+			);
+
+			return $this->db->replace("posts",$data);
+		}
 	}

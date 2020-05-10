@@ -47,7 +47,31 @@ class Posts extends CI_Controller{
 		redirect('posts');
 	}
 
-	public function edit($id){
+	public function edit($slug){
+		$data['posts'] = $this->post_model->get_posts($slug);
+
+		if(empty($data['posts'])){
+			show_404();
+		}
+		$data['title'] = 'Edit Post';
+
+		$this->load->view('templates/header');
+		$this->load->view('posts/edit', $data);
+		$this->load->view('templates/footer');
+
+		#$this->post_model->edit_post();
+		#redirect('posts');
+
+		/*$this->form_validation->set_rules('title','Title','required');
+		$this->form_validation->set_rules('body','Body','required');
+
+		if($this->form_validation->run() === FALSE){
+			$this->load->view('templates/header');
+			$this->load->view('posts/edit', $data);
+			$this->load->view('templates/footer');
+		}else{
+
+		}*/
 
 	}
 

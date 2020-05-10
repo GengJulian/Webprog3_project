@@ -34,7 +34,7 @@
 			$this->db->delete('posts');
 		}
 
-		public function edit_post(){
+		public function update_post(){
 			$slug = url_title($this->input->post('title'));
 
 			$data = array(
@@ -43,6 +43,7 @@
 				'body'  => $this->input->post('body'),
 			);
 
-			return $this->db->replace("posts",$data);
+			$this->db->where('id',$this->input->post('id'));
+			return $this->db->update("posts",$data);
 		}
 	}

@@ -58,21 +58,11 @@ class Posts extends CI_Controller{
 		$this->load->view('templates/header');
 		$this->load->view('posts/edit', $data);
 		$this->load->view('templates/footer');
+}
 
-		#$this->post_model->edit_post();
-		#redirect('posts');
-
-		/*$this->form_validation->set_rules('title','Title','required');
-		$this->form_validation->set_rules('body','Body','required');
-
-		if($this->form_validation->run() === FALSE){
-			$this->load->view('templates/header');
-			$this->load->view('posts/edit', $data);
-			$this->load->view('templates/footer');
-		}else{
-
-		}*/
-
+	public function update(){
+			$this->post_model->update_post();
+			redirect('posts');
 	}
 
 }

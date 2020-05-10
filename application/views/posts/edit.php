@@ -1,7 +1,7 @@
 <h2><?= $title; ?></h2>
 <?php foreach ($posts as $post): ?>
-<?php echo form_open('posts/edit'); ?>
-<?php echo validation_errors(); ?>
+<?php echo form_open('posts/update'); ?>
+<input type="hidden" name="id" value="<?php echo $post['id']; ?>">
 <div class="form-group">
 	<label for="title">Title</label>
 	<input type="text" name="title" class="form-control" value="<?= $post['title']; ?>">

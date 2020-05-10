@@ -8,7 +8,7 @@
 </div>
 <div class="form-group">
 	<label for="exampleInputPassword1">Body</label>
-	<textarea class="form-control" name="body"><?= $post['body']; ?></textarea>
+	<textarea id="editor" class="form-control" name="body"><?= $post['body']; ?></textarea>
 </div>
 <button type="submit" class="btn btn-success">Submit</button>
 </form>

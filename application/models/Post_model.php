@@ -23,6 +23,7 @@
 				'title' => $this->input->post('title'),
 				'slug'  => $slug,
 				'body'  => $this->input->post('body'),
+				'category_id' => $this->input->post('category_id')
 			);
 
 			return $this->db->insert('posts',$data);
@@ -45,5 +46,11 @@
 
 			$this->db->where('id',$this->input->post('id'));
 			return $this->db->update("posts",$data);
+		}
+
+		public function get_categories(){
+			$this->db->order_by('name');
+			$query = $this->db->get('categories');
+			return $query->result_array();
 		}
 	}

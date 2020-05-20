@@ -4,3 +4,11 @@
 	margin: 3px 0;
 	display: block;
 }
+
+.title{
+	color: firebrick;
+}
+
+.post-image{
+	width: 100%;
+}

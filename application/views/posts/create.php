@@ -1,6 +1,6 @@
 <h2><?= $title; ?></h2>
 
-<?php echo form_open('posts/create'); ?>
+<?php echo form_open_multipart('posts/create'); ?>
 <?php echo validation_errors(); ?>
 	<div class="form-group">
 		<label for="title">Title</label>
@@ -17,6 +17,10 @@
 			<option value="<?php echo $category['id'];?>"><?php echo $category['name'];?></option>
 			<?php endforeach; ?>
 		</select>
+	</div>
+	<div class="form-group">
+		<label for="userfile">Post image</label>
+		<input type="file" name="userfile" size="20"/>
 	</div>
 	<button type="submit" class="btn btn-success">Submit</button>
 </form>

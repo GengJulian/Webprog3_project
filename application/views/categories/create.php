@@ -4,7 +4,7 @@
 <?php echo validation_errors(); ?>
 	<div class="form-group">
 		<label for="title">Name</label>
-		<input type="text" name="title" class="form-control" >
+		<input type="text" name="name" class="form-control" >
 	</div>
 	<button type="submit" class="btn btn-success">Submit</button>
 </form>

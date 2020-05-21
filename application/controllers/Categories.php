@@ -19,6 +19,8 @@ class Categories extends CI_Controller{
 			$this->load->view('templates/footer');
 		}else{
 			$this->category_model->create_category();
+
+			$this->session->set_flashdata('category_created','A kategória sikeresen létre lett hozva!');
 			redirect('categories');
 		}
 	}

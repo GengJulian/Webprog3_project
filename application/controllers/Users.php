@@ -6,7 +6,7 @@ class Users extends CI_Controller{
 
 		$this->form_validation->set_rules('name','Name','required');
 		$this->form_validation->set_rules('username','Username','required');
-		$this->form_validation->set_rules('email','Email','required|valid_email');
+		$this->form_validation->set_rules('email','Email','required|valid_email|callback_check_username_exists');
 		$this->form_validation->set_rules('password','Password','required');
 		$this->form_validation->set_rules('password2','Confirm Password','required|matches[password]');
 

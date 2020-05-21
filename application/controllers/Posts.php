@@ -57,12 +57,14 @@ class Posts extends CI_Controller{
 			}
 
 			$this->post_model->create_post($post_image);
+			$this->session->set_flashdata('post_created','Sikeres poszt kiírás!');
 			redirect('posts');
 		}
 	}
 
 	public function delete($id){
 		$this->post_model->delete_post($id);
+		$this->session->set_flashdata('post_deleted','Poszt sikeresen el lett távolítva!');
 		redirect('posts');
 	}
 
@@ -82,6 +84,7 @@ class Posts extends CI_Controller{
 
 	public function update(){
 			$this->post_model->update_post();
+		$this->session->set_flashdata('post_updated','Poszt sikeresen módosításra kerültt!');
 			redirect('posts');
 	}
 

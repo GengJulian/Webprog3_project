@@ -15,6 +15,7 @@ class Posts extends CI_Controller{
 
 	public function view($slug = NULL){
 		$data['posts'] = $this->post_model->get_posts($slug);
+		$data['comments'] = $this->comment_model->get_comments($data['posts'][0]['id']);
 
 		if(empty($data['posts'])){
 			show_404();

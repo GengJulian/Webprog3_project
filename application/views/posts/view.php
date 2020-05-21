@@ -9,8 +9,23 @@
 	<?php echo form_open('/posts/delete/'.$post['id']); ?>
 		<input type="submit" value="delete" class="btn btn-danger">
 	</form>
-
-	<?php echo form_open('comments/create') ?>
+	<hr>
+	<h3>Comments</h3>
+	<?php if($comments): ?>
+		<?php foreach ($comments as $comment): ?>
+			<div class="well">
+				<h5>
+					<?php echo $comment['body']; ?>  by  <strong style="color: rebeccapurple;"> <?php echo $comment['name']; ?> </strong>
+				</h5>
+			</div>
+		<?php endforeach; ?>
+	<?php else: ?>
+		<p>Nem érkezett még komment!</p>
+	<?php endif; ?>
+	<hr>
+	<h3>Add comment</h3>
+	<?php echo validation_errors(); ?>
+	<?php echo form_open('comments/create/'.$post['id']); ?>
 		<div class="form-group">
 			<label>Name</label>
 			<input type="text" name="name" class="form-control">
@@ -21,11 +36,11 @@
 		</div>
 		<div class="form-group">
 			<label>Comment</label>
-			<textarea name="name" class="form-control"></textarea>
+			<textarea name="body" class="form-control"></textarea>
 		</div>
-		<input type="hidden" name="slug" value="<?php echo $post['slug'];?>">
+		<input type="hidden" name="slug" value="<?php echo $post['slug']; ?>">
 		<button class="btn btn-primary" type="submit">Submit comment</button>
 	</form>
-<?php endforeach;?>
+<?php endforeach; ?>
 
 

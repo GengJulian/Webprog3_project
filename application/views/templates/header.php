@@ -14,6 +14,12 @@
 
 		<div class="navbar-collapse collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url();?>login">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url();?>register">Register</a>
+				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
 				</li>
@@ -39,10 +45,7 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url();?>register">Register</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url();?>login">Login</a>
+					<a class="nav-link" href="<?php echo base_url();?>logout">Logout</a>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">

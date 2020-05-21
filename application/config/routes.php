@@ -57,6 +57,7 @@ $route['posts'] = 'posts/index';
 
 $route['default_controller'] = 'pages/view';
 
+$route['logout'] = 'users/logout';
 $route['login'] ='users/login';
 $route['register'] ='users/register';
 

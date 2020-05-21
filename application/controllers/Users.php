@@ -42,6 +42,16 @@ class Users extends CI_Controller{
 		}
 	}
 
+	public function logout(){
+		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('user_id');
+
+		$this->session->set_flashdata('logout_success','Sikeres kijelentkezés!');
+		redirect('users/login');
+
+	}
+
 	public function login(){
 		$data['title'] = 'Login';
 
@@ -49,13 +59,17 @@ class Users extends CI_Controller{
 		$this->form_validation->set_rules('password','Password','required');
 
 		if($this->form_validation->run() === FALSE){
+
 			$this->load->view('templates/header');
 			$this->load->view('users/login', $data);
 			$this->load->view('templates/footer');
+
 		}else{
+
 			$username = $this->input->post('username');
 			$enc_password = md5($this->input->post('password'));
 			$user_id = $this->user_model->login($username,$enc_password);
+
 			if($user_id){
 				$user_data = array('user_id'=>$user_id,
 									'username'=>$username,

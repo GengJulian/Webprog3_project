@@ -5,7 +5,7 @@ class Users extends CI_Controller{
 		$data['title'] = 'Register a new user';
 
 		$this->form_validation->set_rules('name','Name','required');
-		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('username','Username','required|callback_check_username_exists');
 		$this->form_validation->set_rules('email','Email','required|valid_email|callback_check_username_exists');
 		$this->form_validation->set_rules('password','Password','required');
 		$this->form_validation->set_rules('password2','Confirm Password','required|matches[password]');
@@ -22,4 +22,22 @@ class Users extends CI_Controller{
 			redirect('posts');
 		}
 	}
+
+	function check_username_exists($username){
+	$this->form_validation->set_message('check_username_exists','A választott felhasználónév foglalt!');
+	if($this->user_model->check_username_exists($username)){
+		return true;
+	}else{
+		return false;
+	}
+
+	function check_email_exists($email){
+		$this->form_validation->set_message('check_email_exists','Ezzel az email címmel már van regisztrált felhasználó!');
+		if($this->user_model->check_email_exists($email)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+}
 }

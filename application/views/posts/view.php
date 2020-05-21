@@ -9,6 +9,23 @@
 	<?php echo form_open('/posts/delete/'.$post['id']); ?>
 		<input type="submit" value="delete" class="btn btn-danger">
 	</form>
+
+	<?php echo form_open('comments/create') ?>
+		<div class="form-group">
+			<label>Name</label>
+			<input type="text" name="name" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" name="email" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Comment</label>
+			<textarea name="name" class="form-control"></textarea>
+		</div>
+		<input type="hidden" name="slug" value="<?php echo $post['slug'];?>">
+		<button class="btn btn-primary" type="submit">Submit comment</button>
+	</form>
 <?php endforeach;?>
 
 

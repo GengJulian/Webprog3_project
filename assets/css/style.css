@@ -4,6 +4,9 @@
 	margin: 3px 0;
 	display: block;
 }
+.validation-error{
+	color: red;
+}
 
 .title{
 	color: firebrick;

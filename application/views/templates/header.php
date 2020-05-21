@@ -38,6 +38,9 @@
 						<a class="dropdown-item" href="<?php echo base_url();?>categories/create">Create categories</a>
 					</div>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url();?>register">Register</a>
+				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -45,6 +48,7 @@
 			</form>
 		</div>
 	</nav>
+	<br>
 
 	<div class="container">
 

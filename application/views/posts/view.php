@@ -24,7 +24,7 @@
 	<?php endif; ?>
 	<hr>
 	<h3>Add comment</h3>
-	<?php echo validation_errors(); ?>
+	<strong class="validation-error"><?php echo validation_errors(); ?></strong>
 	<?php echo form_open('comments/create/'.$post['id']); ?>
 		<div class="form-group">
 			<label>Name</label>

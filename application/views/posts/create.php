@@ -1,7 +1,7 @@
 <h2><?= $title; ?></h2>
 
 <?php echo form_open_multipart('posts/create'); ?>
-<?php echo validation_errors(); ?>
+<strong class="validation-error"><?php echo validation_errors(); ?></strong>
 	<div class="form-group">
 		<label for="title">Title</label>
 		<input type="text" name="title" class="form-control" >

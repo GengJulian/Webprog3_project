@@ -24,6 +24,7 @@
 				'title' => $this->input->post('title'),
 				'slug'  => $slug,
 				'body'  => $this->input->post('body'),
+				'user_id' => $this->session->user_data('user_id'),
 				'category_id' => $this->input->post('category_id'),
 				'post_image'  => $post_image
 			);

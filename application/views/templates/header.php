@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Header</title>
+		<title>Blog app</title>
 		<link type="text/css" rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
 		<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/style.css" >
 		<script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
@@ -14,12 +14,6 @@
 
 		<div class="navbar-collapse collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url();?>login">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url();?>register">Register</a>
-				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>">Home <span class="sr-only">(current)</span></a>
 				</li>
@@ -32,7 +26,9 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="<?php echo base_url();?>posts">View posts</a>
+						<?php if($this->session->userdata('logged_in')): ?>
 						<a class="dropdown-item" href="<?php echo base_url();?>posts/create">Create post</a>
+						<?php endif; ?>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -41,12 +37,26 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="<?php echo base_url();?>categories">View categories</a>
+						<?php if($this->session->userdata('logged_in')): ?>
 						<a class="dropdown-item" href="<?php echo base_url();?>categories/create">Create categories</a>
+						<?php endif; ?>
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url();?>logout">Logout</a>
-				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<?php if(!$this->session->userdata('logged_in')): ?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url();?>login">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url();?>register">Register</a>
+					</li>
+				<?php endif; ?>
+				<?php if($this->session->userdata('logged_in')): ?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url();?>logout">Logout</a>
+					</li>
+				<?php endif; ?>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search">

@@ -28,6 +28,10 @@ class Posts extends CI_Controller{
 	}
 
 	public function create(){
+		if(!$this->session->userdata('logged_in')){
+			redirect('users/login');
+		}
+
 		$data['title'] = 'Create Post';
 		$data['categories'] = $this->post_model->get_categories();
 
@@ -63,13 +67,25 @@ class Posts extends CI_Controller{
 	}
 
 	public function delete($id){
+		if(!$this->session->userdata('logged_in')){
+			redirect('users/login');
+		}
+
 		$this->post_model->delete_post($id);
 		$this->session->set_flashdata('post_deleted','Poszt sikeresen el lett távolítva!');
 		redirect('posts');
 	}
 
 	public function edit($slug){
+		if(!$this->session->userdata('logged_in')){
+			redirect('users/login');
+		}
+
 		$data['posts'] = $this->post_model->get_posts($slug);
+
+		if($this->session->userdata('user_id') !== $data['posts'][0]['user_id']){
+			redirect('posts');
+		}
 		$data['categories'] = $this->post_model->get_categories();
 
 		if(empty($data['posts'])){
@@ -83,8 +99,11 @@ class Posts extends CI_Controller{
 }
 
 	public function update(){
-			$this->post_model->update_post();
-		$this->session->set_flashdata('post_updated','Poszt sikeresen módosításra kerültt!');
+		if(!$this->session->userdata('logged_in')){
+			redirect('users/login');
+		}
+		$this->post_model->update_post();
+		$this->session->set_flashdata('post_updated','Poszt sikeresen módosításra került!');
 			redirect('posts');
 	}
 

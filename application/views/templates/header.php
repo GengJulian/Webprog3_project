@@ -53,6 +53,19 @@
 						<a class="nav-link" href="<?php echo base_url();?>register">Register</a>
 					</li>
 				<?php endif; ?>
+				<?php if($this->session->userdata('type') == 'admin'):?>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Admin panel
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="<?php echo base_url();?>admin_panel/users">Manage users</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link admin_panel_btn" href="<?php echo base_url();?>admin_panel"></a>
+					</li>
+				<?php endif; ?>
 				<?php if($this->session->userdata('logged_in')): ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url();?>logout">Logout</a>

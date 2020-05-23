@@ -80,6 +80,7 @@ class Posts extends CI_Controller{
 			redirect('users/login');
 		}
 
+
 		$this->post_model->delete_post($id);
 		$this->session->set_flashdata('post_deleted','Poszt sikeresen el lett távolítva!');
 		redirect('posts');
@@ -92,7 +93,7 @@ class Posts extends CI_Controller{
 
 		$data['posts'] = $this->post_model->get_posts($slug);
 
-		if($this->session->userdata('user_id') !== $data['posts'][0]['user_id']){
+		if($this->session->userdata('user_id') !== $data['posts'][0]['user_id'] and $this->session->userdata('type') != 'admin'){
 			redirect('posts');
 		}
 		$data['categories'] = $this->post_model->get_categories();

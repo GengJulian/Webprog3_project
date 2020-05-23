@@ -7,7 +7,8 @@ class User_model extends CI_Model{
 					'email' =>$this->input->post('email'),
 					'username' =>$this->input->post('username'),
 					'password' => $enc_password,
-					'zipcode' =>$this->input->post('zipcode'));
+					'zipcode' =>$this->input->post('zipcode'),
+					'type' => 'normal');
 
 		return $this->db->insert('users',$data);
 	}
@@ -40,5 +41,14 @@ class User_model extends CI_Model{
 		}else{
 			return false;
 		}
+	}
+
+	public function get_users($user_id = FALSE){
+		if($user_id){
+			$query = $this->db->get_where('users',array('id' => $user_id));
+		}else{
+			$query = $this->db->get('users');
+		}
+		return $query->result_array();
 	}
 }

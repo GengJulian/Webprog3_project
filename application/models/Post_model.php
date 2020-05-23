@@ -70,7 +70,7 @@
 
 		public function export_posts(){
 			$query = $this->db->query("select title as 'post title',body as 'post text',
-								categories.name as category,users.name as 'created by'
+								categories.name as category,users.name as 'created by',posts.created_at
 								 from posts join categories on categories.id = posts.category_id 
 								 join users on users.id = posts.user_id order by users.name");
 			return $query;

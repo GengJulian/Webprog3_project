@@ -70,9 +70,12 @@ class Users extends CI_Controller{
 			$enc_password = md5($this->input->post('password'));
 			$user_id = $this->user_model->login($username,$enc_password);
 
+
 			if($user_id){
+				$user = $this->user_model->get_users($user_id);
 				$user_data = array('user_id'=>$user_id,
 									'username'=>$username,
+									'type' =>$user[0]['type'],
 									'logged_in'=>true);
 				$this->session->set_userdata($user_data);
 				$this->session->set_flashdata('login_success','Sikeres bejelentkezés!');
@@ -81,7 +84,6 @@ class Users extends CI_Controller{
 				$this->session->set_flashdata('login_failed','Sikertelen bejelentkezés!');
 				redirect('users/login');
 			}
-
 		}
 	}
 }

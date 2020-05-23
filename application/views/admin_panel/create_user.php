@@ -1,9 +1,8 @@
-
 <strong class="validation-error"><?php echo validation_errors(); ?></strong>
-<?php echo form_open('users/register'); ?>
+<?php echo form_open('admin_panel/add_user'); ?>
 <div class="row justify-content-center">
 	<div class="col-md-4">
-		<h2 class="text-center"><?= $title; ?></h2>
+		<h2 class="text-center"><?php echo $title; ?></h2>
 		<div class="form-group">
 			<label>Name</label>
 			<input type="text" name="name" placeholder="Name" class="form-control">
@@ -28,11 +27,14 @@
 			<label>Zipcode</label>
 			<input type="text" name="zipcode" placeholder="Zipcode" class="form-control">
 		</div>
-		<input type="hidden" name="type" value="normal" >
+		<div class="form-group">
+			<label>Account type</label>
+			<select class="form-control" id="exampleSelect1" name="type">
+				<option>normal</option>
+				<option>admin</option>
+			</select>
+		</div>
 		<button type="submit" class="btn btn-primary btn-block">Register</button>
-
 	</div>
 </div>
-
 <?php echo form_close();?>
-

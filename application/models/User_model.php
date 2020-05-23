@@ -6,9 +6,9 @@ class User_model extends CI_Model{
 		$data = array('name' => $this->input->post('name'),
 					'email' =>$this->input->post('email'),
 					'username' =>$this->input->post('username'),
-					'password' => $enc_password,
+					'password' => $this->input->post('type'),
 					'zipcode' =>$this->input->post('zipcode'),
-					'type' => 'normal');
+					'type' => $account_type);
 
 		return $this->db->insert('users',$data);
 	}
@@ -50,5 +50,9 @@ class User_model extends CI_Model{
 			$query = $this->db->get('users');
 		}
 		return $query->result_array();
+	}
+
+	public function delete_user($user_id){
+		$this->db->delete('users', array('id' => $user_id));
 	}
 }

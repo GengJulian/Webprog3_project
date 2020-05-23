@@ -67,4 +67,12 @@
 			$query = $this->db->get_where('posts',array('category_id' => $category_id));
 			return $query->result_array();
 		}
+
+		public function export_posts(){
+			$query = $this->db->query("select title as 'post title',body as 'post text',
+								categories.name as category,users.name as 'created by'
+								 from posts join categories on categories.id = posts.category_id 
+								 join users on users.id = posts.user_id order by users.name");
+			return $query;
+		}
 	}

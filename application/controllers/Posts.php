@@ -116,4 +116,18 @@ class Posts extends CI_Controller{
 			redirect('posts');
 	}
 
+	public function export(){
+		$this->load->dbutil();
+		$result = $this->post_model->export_posts();
+		$csvContent = $this->dbutil->csv_from_result($result);
+		force_download('posts.csv',$csvContent);
+
+		/*if ( ! write_file('./exports/posts.csv', $csvContent)) {
+			$this->session->set_flashdata('export_success','Sikeres post export!');
+		} else {
+			$this->session->set_flashdata('export_fail','Sikertelen post export!');
+		}*/
+		redirect('posts');
+	}
+
 }

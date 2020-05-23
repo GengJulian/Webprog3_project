@@ -18,7 +18,8 @@
 
 .pagination-links{
 	margin: 30px 0;
-
+	display: flex;
+	justify-content: center;
 }
 
 a.pagination-links{
@@ -28,7 +29,7 @@ a.pagination-links{
 	border: 1px #ccc solid;
 }
 
-pagination-links strong{
+.pagination-links strong{
 	padding: 8px 13px;
 	margin: 5px;
 	background: #8ba8af;

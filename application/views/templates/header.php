@@ -28,6 +28,7 @@
 						<a class="dropdown-item" href="<?php echo base_url();?>posts">View posts</a>
 						<?php if($this->session->userdata('logged_in')): ?>
 						<a class="dropdown-item" href="<?php echo base_url();?>posts/create">Create post</a>
+						<a class="dropdown-item" href="<?php echo base_url();?>posts/export">Export posts</a>
 						<?php endif; ?>
 					</div>
 				</li>
@@ -105,6 +106,13 @@
 
 		<?php if($this->session->flashdata('login_failed')): ?>
 			<?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('export_success')): ?>
+			<?php echo '<p class="alert alert-success">'.$this->session->flashdata('export_success').'</p>'; ?>
+		<?php endif; ?>
+		<?php if($this->session->flashdata('export_failed')): ?>
+			<?php echo '<p class="alert alert-danger">'.$this->session->flashdata('export_failed').'</p>'; ?>
 		<?php endif; ?>
 
 

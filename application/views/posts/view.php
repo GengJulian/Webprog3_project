@@ -4,7 +4,7 @@
 	<small class="post-date">Posted on: <?php echo $post['created_at'];?></small>
 	</br>
 	<?php echo $post['body']; ?><br>
-	<?php if($this->session->userdata('user_id') === $post['user_id']): ?>
+	<?php if($this->session->userdata('user_id') == $post['user_id']): ?>
 	<hr>
 	<a class="btn btn-primary float-left" style="margin: 0 10px;" href="<?php echo base_url(); ?>/posts/edit/<?php echo $post['slug']; ?>">Edit</a>
 	<?php echo form_open('/posts/delete/'.$post['id']); ?>

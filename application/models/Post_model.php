@@ -5,7 +5,10 @@
 			$this->load->database();
 		}
 
-		public function get_posts($slug = FALSE){
+		public function get_posts($slug = FALSE,$limit = FALSE,$offset =FALSE){
+			if($limit){
+				$this->db->limit($limit,$offset);
+			}
 			if($slug === FALSE){
 				$this->db->order_by('posts.id', 'DESC');
 				$this->db->join('categories','categories.id = posts.category_id');
@@ -24,7 +27,7 @@
 				'title' => $this->input->post('title'),
 				'slug'  => $slug,
 				'body'  => $this->input->post('body'),
-				'user_id' => $this->session->user_data('user_id'),
+				'user_id' => $this->session->userdata('user_id'),
 				'category_id' => $this->input->post('category_id'),
 				'post_image'  => $post_image
 			);

@@ -1,19 +1,20 @@
 <strong class="validation-error"><?php echo validation_errors(); ?></strong>
-<?php echo form_open('admin_panel/add_user'); ?>
+<?php echo form_open('admin_panel/update_user'); ?>
+<input type="hidden" name="user_id" value="<?php echo $users[0]['id']; ?>">
 <div class="row justify-content-center">
 	<div class="col-md-4">
 		<h2 class="text-center"><?php echo $title; ?></h2>
 		<div class="form-group">
 			<label>Name</label>
-			<input type="text" name="name" placeholder="Name" class="form-control">
+			<input type="text" name="name" placeholder="Name" class="form-control" value="<?php echo $users[0]['name']  ?>">
 		</div>
 		<div class="form-group">
 			<label>Email</label>
-			<input type="text" name="email" placeholder="Email" class="form-control">
+			<input type="text" name="email" placeholder="Email" class="form-control" value="<?php echo $users[0]['email'] ?>">
 		</div>
 		<div class="form-group">
 			<label>Username</label>
-			<input type="text" name="username" placeholder="Username" class="form-control">
+			<input type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $users[0]['username'] ?>">
 		</div>
 		<div class="form-group">
 			<label>Password</label>
@@ -25,7 +26,7 @@
 		</div>
 		<div class="form-group">
 			<label>Zipcode</label>
-			<input type="text" name="zipcode" placeholder="Zipcode" class="form-control">
+			<input type="text" name="zipcode" placeholder="Zipcode" class="form-control" value="<?php echo $users[0]['zipcode'] ?>">
 		</div>
 		<div class="form-group">
 			<label>Account type</label>
@@ -34,7 +35,7 @@
 				<option value="admin">admin</option>
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary btn-block">Register</button>
+		<button type="submit" class="btn btn-primary btn-block">Submit</button>
 	</div>
 </div>
 <?php echo form_close();?>

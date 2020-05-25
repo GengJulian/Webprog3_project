@@ -124,8 +124,13 @@
 		<?php if($this->session->flashdata('export_success')): ?>
 			<?php echo '<p class="alert alert-success">'.$this->session->flashdata('export_success').'</p>'; ?>
 		<?php endif; ?>
+
 		<?php if($this->session->flashdata('export_failed')): ?>
 			<?php echo '<p class="alert alert-danger">'.$this->session->flashdata('export_failed').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('user_updated')): ?>
+			<?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_updated').'</p>'; ?>
 		<?php endif; ?>
 
 

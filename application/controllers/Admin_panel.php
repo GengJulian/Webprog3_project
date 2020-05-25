@@ -16,6 +16,13 @@ class Admin_panel extends CI_Controller{
 	}
 
 	public function add_user(){
+		if(!$this->session->userdata('logged_in')){
+			redirect('users/login');
+		}
+
+		if($this->session->userdata('type') != 'admin'){
+			redirect('posts');
+		}
 		$data['title'] = 'Add a new user!';
 
 		$this->form_validation->set_rules('name','Name','required');
@@ -55,5 +62,33 @@ class Admin_panel extends CI_Controller{
 		}else{
 			return false;
 		}
+	}
+
+	public function edit_user($id){
+		if(!$this->session->userdata('logged_in')){
+			redirect('users/login');
+		}
+
+		if($this->session->userdata('type') != 'admin'){
+			redirect('posts');
+		}
+
+		$data['title'] = 'Edit user';
+
+		$data['users'] = $this->user_model->get_users($id);
+
+		$this->load->view('templates/header');
+		$this->load->view('admin_panel/edit_user', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function update_user(){
+		if(!$this->session->userdata('logged_in')){
+			redirect('users/login');
+		}
+		$enc_password = md5($this->input->post('password'));
+		$this->user_model->update_user($enc_password);
+		$this->session->set_flashdata('user_updated','Felhasználó adatai sikeresen módosításra kerültek!');
+		redirect('admin_panel/users');
 	}
 }

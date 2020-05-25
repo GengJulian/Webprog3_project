@@ -59,6 +59,7 @@ $route['posts'] = 'posts/index';
 
 $route['default_controller'] = 'pages/view';
 
+$route['admin_panel/edit_user/(:any)'] = 'admin_panel/edit_user/$1';
 $route['admin_panel/users'] ='admin_panel/list_users';
 $route['admin_panel/delete_user/(:any)'] = 'admin_panel/delete_user/$1';
 $route['admin_panel/create_user'] = 'admin_panel/add_user';

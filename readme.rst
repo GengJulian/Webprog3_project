@@ -1,1 +1,5 @@
-This project is being built with CodIgniter 3.
+username: admin
+password: admin
+
+username: user
+password: user
